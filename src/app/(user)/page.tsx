@@ -660,12 +660,16 @@ export default function HomePage() {
                     <div
                       className={`w-9 h-9 p-2 rounded-lg ${card.iconBg} flex items-center justify-center shadow-sm`}
                     >
-                      <Image
-                        src={card.icon}
-                        alt={card.title}
-                        width={40}
-                        height={40}
-                      />
+                      {card.icon.startsWith("/") ? (
+                        <Image
+                          src={card.icon}
+                          alt={card.title}
+                          width={40}
+                          height={40}
+                        />
+                      ) : (
+                        <span className="text-white text-lg">{card.icon}</span>
+                      )}
                     </div>
                   </div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">

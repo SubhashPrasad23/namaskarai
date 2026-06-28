@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Search, Bookmark, ExternalLink, Users, DollarSign, Code } from "lucide-react";
+import { ArrowLeft, Search, Bookmark, ExternalLink, Users, DollarSign, Code, PencilSparkles } from "lucide-react";
 import Link from "next/link";
 
 interface Tool {
@@ -77,22 +77,24 @@ export default function AiToolsClient({ tools: serverTools }: { tools: Tool[] })
 
 
   return (
-    <div className="flex flex-col min-h-screen py-8 sm:py-12">
+    <div className="flex flex-col min-h-screen py-8 md:py-10">
       <section className="mx-auto w-full md:max-w-5/6 px-4 sm:px-6 md:px-8 lg:px-4">
         <Link href="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-red-600 mb-6 transition-colors">
           <ArrowLeft className="h-4 w-4" /><span className="text-sm font-medium">Back</span>
         </Link>
 
         {/* ══════ HERO ══════ */}
-        <div className="glass-apple-liquid mb-8"><div className="glass-apple-liquid-inner p-5 sm:p-8">
-          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 border border-red-200 bg-red-50 px-3 py-1 rounded-full mb-3">✨ AI Tool Library</span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-red-600 mb-3">AI Tool Library</h1>
-          <p className="text-gray-600 text-base mb-1">Assam-focused practical AI tools directory with real-world use cases.</p>
+        <div className="glass-video-card mb-8">
+          <div className=" p-5! glass-video-card">
+          <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-600 border border-red-200 bg-red-50 px-3 py-1 rounded-full mb-3"><PencilSparkles className="h-4 w-3"/> AI Tool Library</span>
+          <h2 className="text-xl sm:text-2xl font-bold text-red-600 mb-1">AI Tool Library</h2>
+          <p className="text-gray-600 text-sm mb-1">Assam-focused practical AI tools directory with real-world use cases.</p>
           <p className="text-gray-500 text-sm">Pick one tool today and run a 10-minute test.</p>
         </div></div>
 
         {/* ══════ WHAT DO YOU WANT TO GET DONE? ══════ */}
-        <div className="glass-apple-liquid mb-8"><div className="glass-apple-liquid-inner p-5 sm:p-8">
+        <div className="glass-video-card mb-8">
+          <div className=" glass-video-card p-5!">
           <div className="flex items-center justify-between mb-1">
             <h2 className="text-sm font-bold text-red-600 uppercase tracking-wide">WHAT DO YOU WANT TO GET DONE?</h2>
             {activeTask && (
@@ -102,9 +104,10 @@ export default function AiToolsClient({ tools: serverTools }: { tools: Tool[] })
           <p className="text-sm text-gray-600 mb-5">Choose a task first, then get Assam-relevant tool recommendations.</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {tasks.map((task) => (
-              <button key={task.title} onClick={() => setActiveTask(activeTask === task.title ? null : task.title)} className={`text-left p-4 rounded-xl border transition-colors ${activeTask === task.title ? "border-red-400 bg-red-50" : "border-gray-200 bg-white/60 hover:border-red-200"}`}>
+              <button key={task.title} onClick={() => setActiveTask(activeTask === task.title ? null : task.title)} 
+                className={`text-left p-4 rounded-xl border transition-colors ${activeTask === task.title ? "border-red-400 bg-red-50" : "border-gray-200 glass-apple-liquid-inner hover:border-red-200"}`}>
                 <span className="inline-flex items-center gap-1.5 text-xs font-medium text-red-600 border border-red-200 bg-red-50 px-2 py-0.5 rounded-full mb-2">👤 {task.audience}</span>
-                <h4 className="text-sm font-bold text-gray-900 mb-1">{task.title}</h4>
+                <h4 className="text-sm font-semibold text-gray-900 mb-1">{task.title}</h4>
                 <p className="text-xs text-gray-500">{task.desc}</p>
               </button>
             ))}
@@ -116,7 +119,8 @@ export default function AiToolsClient({ tools: serverTools }: { tools: Tool[] })
             const task = tasks.find((t) => t.title === activeTask);
             if (!task) return null;
             return (
-              <motion.div key="playbook" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden mt-6 border-t border-gray-200/60 pt-6">
+              <motion.div key="playbook" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} 
+              className="overflow-hidden mt-6 border-t border-gray-200/60 pt-6">
                 <div className="flex items-center justify-between mb-2">
                   <h3 className="text-xs font-bold text-red-600 uppercase tracking-wide">TASK PLAYBOOK</h3>
                   <span className="text-xs font-medium text-white bg-red-600 px-3 py-1 rounded-full">Top tools for this task</span>
@@ -125,7 +129,7 @@ export default function AiToolsClient({ tools: serverTools }: { tools: Tool[] })
                 <div className="space-y-2 mb-5">
                   {task.steps.map((step, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <span className="flex-shrink-0 w-6 h-6 rounded-full border-2 border-red-200 text-red-600 text-xs font-bold flex items-center justify-center">{i + 1}</span>
+                      <span className="glass-apple-liquid-inner shrink-0 w-6 h-6 rounded-full border-2 border-red-200 text-red-600 text-xs font-bold flex items-center justify-center">{i + 1}</span>
                       <p className="text-sm text-gray-700">{step}</p>
                     </div>
                   ))}
@@ -155,15 +159,16 @@ export default function AiToolsClient({ tools: serverTools }: { tools: Tool[] })
         </div></div>
 
         {/* ══════ FACEBOOK CTA ══════ */}
-        <div className="glass-apple-liquid mb-8"><div className="glass-apple-liquid-inner p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="glass-video-card mb-8">
+          <div className="glass-video-card p-5! flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <p className="text-sm text-gray-600">Join our Facebook community for fortnightly Assam-focused tool picks.</p>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 glass-btn-red text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:scale-[1.02] transition-colors whitespace-nowrap">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center md:justify-start justify-center gap-2 glass-btn-red text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:scale-[1.02] transition-colors whitespace-nowrap">
             Facebook community <ExternalLink className="h-3.5 w-3.5" />
           </a>
         </div></div>
 
         {/* ══════ SCOPE TABS ══════ */}
-        <div className="flex items-center gap-2 mb-6">
+        <div className="flex items-center gap-2 mb-6 glass-video-card w-auto">
           {[{ key: "all", label: "All" }, { key: "global", label: "Global" }, { key: "local", label: "Local" }].map((tab) => (
             <button key={tab.key} onClick={() => setActiveScope(tab.key)} className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors ${activeScope === tab.key ? "bg-red-600 text-white" : "bg-white border border-gray-200 text-gray-700 hover:bg-red-50"}`}>
               {tab.label}
@@ -173,10 +178,11 @@ export default function AiToolsClient({ tools: serverTools }: { tools: Tool[] })
 
 
         {/* ══════ MAIN LAYOUT: SIDEBAR + TOOLS ══════ */}
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col md:flex-row gap-6 glass-video-card">
           {/* Left Sidebar - Fixed */}
-          <aside className="hidden md:block w-64 shrink-0 sticky top-24 self-start h-fit">
-            <div className="glass-apple-liquid"><div className="glass-apple-liquid-inner p-5 sm:p-6 space-y-6">
+          <aside className="hidden md:block w-64 shrink-0 sticky top-24 self-start h-fit ">
+            <div className="glass-apple-liquid">
+              <div className="glass-apple-liquid-inner p-5 sm:p-6 space-y-6">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <input type="text" placeholder="Search tools..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-9 pr-3 py-2.5 rounded-xl border border-gray-200 bg-white/70 text-sm focus:outline-none focus:ring-2 focus:ring-red-200 transition" />
@@ -227,7 +233,7 @@ export default function AiToolsClient({ tools: serverTools }: { tools: Tool[] })
 
 
           {/* Right Content - Scrollable */}
-          <div className="flex-1 min-w-0">
+          <div className="flex-1 min-w-0 p-5">
             <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
               <p className="text-sm text-gray-500">Showing {filtered.length} tools</p>
               <div className="flex items-center gap-2 flex-wrap">

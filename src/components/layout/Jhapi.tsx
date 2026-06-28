@@ -10,7 +10,7 @@ export default function Jhapi() {
 
   return (
     <div
-      className="fixed top-1/2 right-[-320px] -z-0 pointer-events-none hidden xl:block"
+      className=" fixed md:top-1/2 top-2/5 -z-0 pointer-events-none right-[-120px] sm:right-[-180px] md:right-[-220px] lg:right-[-280px] xl:right-[-320px]"
       style={{
         transform: "translateY(-50%)",
       }}
@@ -18,10 +18,8 @@ export default function Jhapi() {
       <motion.div
         style={{
           rotate,
-          width: 650,
-          height: 650,
         }}
-        className="flex items-center justify-center"
+        className="flex items-center justify-center w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] xl:w-[650px] xl:h-[650px]"
       >
         <Image
           src="/images/full.png"
@@ -30,7 +28,7 @@ export default function Jhapi() {
           height={605}
           priority
           draggable={false}
-          className="select-none"
+          className="select-none opacity-40 sm:opacity-50 md:opacity-60 lg:opacity-80 xl:opacity-100"
         />
       </motion.div>
     </div>

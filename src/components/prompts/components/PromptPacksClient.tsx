@@ -81,15 +81,15 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
   ];
 
   return (
-    <div className="flex flex-col min-h-screen py-8 sm:py-12">
+    <div className="flex flex-col min-h-screen py-8 md:py-10 ">
       <section className="mx-auto w-full md:max-w-5/6 px-4 sm:px-8 md:px-8 lg:px-4">
         <Link href="/" className="inline-flex items-center gap-2 text-gray-600 hover:text-red-600 mb-6 transition-colors">
           <ArrowLeft className="h-4 w-4" /><span className="text-sm font-medium">Back</span>
         </Link>
 
         {/* ══════ AI PROMPTS GUIDE ══════ */}
-        <div className="glass-apple-liquid mb-8">
-          <div className="glass-apple-liquid-inner p-6 sm:p-8">
+        <div className="glass-video-card mb-8">
+          <div className="glass-video-card p-5!">
           <div className="flex items-center gap-3 mb-2">
             <BookOpen className="h-5 w-5 text-red-600" />
             <h2 className="text-xl sm:text-2xl font-bold text-red-600">AI Prompts Guide</h2>
@@ -97,14 +97,17 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
           <p className="text-gray-600 text-sm mb-6">Use this guide to improve prompt quality with structure, mistakes to avoid, and copy-ready templates.</p>
 
           {/* Accordion: Prompt Structure */}
-          <div className="border-t border-gray-200/60">
-            <button onClick={() => toggleSection("structure")} className="w-full flex items-center justify-between py-4 text-left">
-              <div className="flex items-center gap-3"><NotepadText className="h-5 w-5 text-gray-700" /><span className="font-semibold text-gray-900">Prompt structure (Role / Context / Task / Output)</span></div>
-              {openSection === "structure" ? <ChevronUp className="h-5 w-5 text-gray-500" /> : <ChevronDown className="h-5 w-5 text-gray-500" />}
+          <div className="border-t border-gray-200/60 ">
+              <button onClick={() => toggleSection("structure")} className="glass-apple-liquid-inner rounded-md! w-full flex items-center justify-between py-4 text-left">
+              <div className="flex items-center  gap-3">
+                  <NotepadText className="md:h-5 md:w-5 h-4 w-4 text-red-600 shrink-0" />
+              <span className="font-semibold text-black text-sm">Prompt structure (Role / Context / Task / Output)</span>
+              </div>
+                {openSection === "structure" ? <ChevronUp className="h-5 w-5 text-gray-500 shrink-0" /> : <ChevronDown className="shrink-0 h-5 w-5 text-gray-500" />}
             </button>
             <AnimatePresence>
               {openSection === "structure" && (
-                <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
+                <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden mt-2">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pb-4">
                     {promptStructure.map((item) => (<div key={item.title} className="border border-gray-200 rounded-xl p-4 bg-white/50"><h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4><p className="text-sm text-gray-500">{item.desc}</p></div>))}
                   </div>
@@ -115,15 +118,18 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
 
           {/* Accordion: 10 Beginner Mistakes */}
           <div className="border-t border-gray-200/60">
-            <button onClick={() => toggleSection("mistakes")} className="w-full flex items-center justify-between py-4 text-left">
-              <div className="flex items-center gap-3"><AlertTriangle className="h-5 w-5 text-amber-500" /><span className="font-semibold text-gray-900">10 beginner mistakes</span></div>
-              {openSection === "mistakes" ? <ChevronUp className="h-5 w-5 text-gray-500" /> : <ChevronDown className="h-5 w-5 text-gray-500" />}
+              <button onClick={() => toggleSection("mistakes")} className="glass-apple-liquid-inner rounded-md! w-full flex items-center justify-between py-4 text-left">
+              <div className="flex items-center gap-3">
+                  <AlertTriangle className="md:h-5 md:w-5 h-4 w-4 text-red-600 shrink-0" />
+                  <span className="font-semibold text-black text-sm">10 beginner mistakes</span>
+                  </div>
+                {openSection === "mistakes" ? <ChevronUp className="h-5 w-5 text-gray-500 shrink-0" /> : <ChevronDown className="shrink-0 h-5 w-5 text-gray-500" />}
             </button>
             <AnimatePresence>
               {openSection === "mistakes" && (
-                <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
+                <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden mt-2">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pb-4">
-                    {beginnerMistakes.map((m, i) => (<div key={i} className="border border-gray-200 rounded-xl p-4 bg-white/50"><p className="text-sm text-gray-700"><span className="text-red-600 font-semibold">{i + 1}.</span> {m}</p></div>))}
+                      {beginnerMistakes.map((m, i) => (<div key={i} className="glass-apple-liquid-inner border border-gray-200 rounded-xl p-4 bg-white/50"><p className="text-sm text-gray-700"><span className="text-red-600 font-semibold">{i + 1}.</span> {m}</p></div>))}
                   </div>
                 </motion.div>
               )}
@@ -131,28 +137,32 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
           </div>
 
           {/* Accordion: 5 Copy-Ready Templates */}
-          <div className="border-t border-gray-200/60">
-            <button onClick={() => toggleSection("templates")} className="w-full flex items-center justify-between py-4 text-left">
-              <div className="flex items-center gap-3"><Clipboard className="h-5 w-5 text-" /><span className="font-semibold text-blue-700 underline underline-offset-2">5 copy-ready templates (EN + AS)</span></div>
-              {openSection === "templates" ? <ChevronUp className="h-5 w-5 text-gray-500" /> : <ChevronDown className="h-5 w-5 text-gray-500" />}
+          <div className="border-t border-gray-200/60 ">
+              <button onClick={() => toggleSection("templates")} className="glass-apple-liquid-inner rounded-md! w-full flex items-center justify-between py-4 text-left">
+              <div className="flex items-center gap-3">
+                  <Copy className="md:h-5 md:w-5 h-4 w-4 text-red-600 shrink-0" />
+                  <span className="font-semibold text-black text-sm">5 copy-ready templates (EN + AS)</span></div>
+                {openSection === "templates" ? <ChevronUp className="h-5 w-5 text-gray-500 shrink-0" /> : <ChevronDown className="shrink-0 h-5 w-5 text-gray-500" />}
             </button>
             <AnimatePresence>
               {openSection === "templates" && (
                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: "easeInOut" }} className="overflow-hidden">
                   <div className="space-y-5 pb-4">
                     {copyReadyTemplates.map((tpl, i) => (
-                      <div key={i} className="border border-gray-200 rounded-xl p-5 bg-white/50">
+                      <div key={i} className="border border-gray-200 rounded-xl p-5 glass-video-card mt-2">
                         <h4 className="font-bold text-gray-900 mb-4">{tpl.label}</h4>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                           <div className="border border-gray-200 rounded-xl p-4 bg-white/70">
                             <p className="text-xs font-semibold text-red-600 mb-2">অসমীয়া</p>
                             <p className="text-sm text-gray-700 mb-3">{tpl.as}</p>
-                            <button onClick={() => navigator.clipboard.writeText(tpl.as)} className="w-full py-2 rounded-lg text-sm border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"><Clipboard className="h-3.5 w-3.5" /> Copy Assamese</button>
+                            <button onClick={() => navigator.clipboard.writeText(tpl.as)} className="w-full py-2 rounded-lg text-sm border border-red-200  text-gray-700  transition-colors flex items-center justify-center gap-2">
+                              <Clipboard className="h-3.5 w-3.5" /> Copy Assamese</button>
                           </div>
                           <div className="border border-gray-200 rounded-xl p-4 bg-white/70">
                             <p className="text-xs font-semibold text-red-600 mb-2">English</p>
                             <p className="text-sm text-gray-700 mb-3">{tpl.en}</p>
-                            <button onClick={() => navigator.clipboard.writeText(tpl.en)} className="w-full py-2 rounded-lg text-sm border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2"><Clipboard className="h-3.5 w-3.5" /> Copy English</button>
+                            <button onClick={() => navigator.clipboard.writeText(tpl.en)} className="w-full py-2 rounded-lg text-sm border border-red-200  text-gray-700 hover:bg-gray-50 transition-colors flex items-center justify-center gap-2">
+                              <Clipboard className="h-3.5 w-3.5" /> Copy English</button>
                           </div>
                         </div>
                       </div>
@@ -167,10 +177,10 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
 
 
         {/* ══════ DAILY PROMPT HABIT + AUDIENCE QUICK LANES ══════ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+        <div className="glass-video-card grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
           {/* Daily Prompt Habit */}
           <div className="glass-apple-liquid">
-            <div className="glass-apple-liquid-inner p-5 sm:p-6">
+            <div className="glass-apple-liquid-inner p-6!">
               <h3 className="text-lg font-bold text-red-600 mb-2">{isAs ? "দৈনিক প্ৰমপ্ট অভ্যাস" : "Daily Prompt Habit"}</h3>
               <p className="text-sm text-gray-700 mb-4">{isAs ? "দৈনিক কমেও ১ টা প্ৰমপ্ট কপি আৰু চলাওক। ১০ মিনিটৰ লুপে শিক্ষা বৃদ্ধি কৰে।" : "Copy and run at least 1 prompt daily. A 10-minute loop compounds learning."}</p>
               <p className="text-xs text-gray-500 font-medium mb-2">{isAs ? "শেহতীয়াকৈ কপি কৰা" : "Recently Copied"}</p>
@@ -185,12 +195,12 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
           </div>
 
           {/* Audience Quick Lanes */}
-          <div className="glass-apple-liquid">
-            <div className="glass-apple-liquid-inner p-5 sm:p-6">
+          <div className="glass-video-card">
+            <div className=" p-5 sm:p-6">
               <h3 className="text-lg font-bold text-red-600 mb-3">Audience Quick Lanes</h3>
               <div className="grid grid-cols-2 gap-3">
                 {audienceQuickLanes.map((lane) => (
-                  <button key={lane.label} onClick={() => setActiveCategory(activeCategory === lane.category ? "All" : lane.category)} className={`text-left p-3 rounded-xl border transition-colors ${activeCategory === lane.category ? "border-red-500 bg-red-50" : "border-gray-200 bg-white/50 hover:border-red-200 hover:bg-red-50/50"}`}>
+                  <button key={lane.label} onClick={() => setActiveCategory(activeCategory === lane.category ? "All" : lane.category)} className={`glass-apple-liquid-inner text-left p-3 rounded-xl border transition-colors ${activeCategory === lane.category ? "border-red-500 bg-red-50" : "border-gray-200 bg-white/50 hover:border-red-200 hover:bg-red-50/50"}`}>
                     <span className="block text-sm font-semibold text-gray-900">{lane.label}</span>
                     <span className="block text-xs text-gray-500">{lane.desc}</span>
                   </button>
@@ -202,8 +212,8 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
 
 
         {/* ══════ AI PROMPT PACKS ══════ */}
-        <div className="glass-apple-liquid mb-8">
-          <div className="glass-apple-liquid-inner p-5 sm:p-8">
+        <div className="glass-video-card  mb-8">
+          <div className=" p-5 sm:p-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
             <div>
               <div className="flex items-center gap-3 mb-1">
@@ -212,7 +222,7 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
               </div>
               <p className="text-gray-600 text-sm">Quick navigation, compact cards, and copy-ready prompts.</p>
             </div>
-            <div className="flex items-center gap-1 bg-white/70 border border-gray-200 rounded-full px-1 py-1">
+            <div className="flex items-center gap-1 border border-gray-200 rounded-full px-1 py-1 glass-video-card">
               <span className="text-xs text-gray-500 px-2">Prompt Language</span>
               <button onClick={() => setPromptLang("as")} className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${isAs ? "bg-red-600 text-white" : "text-gray-600 hover:bg-gray-100"}`}>অসমীয়া</button>
               <button onClick={() => setPromptLang("en")} className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${!isAs ? "bg-red-600 text-white" : "text-gray-600 hover:bg-gray-100"}`}>English</button>
@@ -220,8 +230,8 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
           </div>
 
           <div className="relative mb-6">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
-            <input type="text" placeholder="Search prompts..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-11 pr-4 py-3.5 rounded-2xl border border-white/60 bg-white/50 backdrop-blur-md text-sm focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-200 transition shadow-sm" />
+              <Search className="absolute  left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-red-800" />
+            <input type="text" placeholder="Search prompts..." value={search} onChange={(e) => setSearch(e.target.value)} className="w-full pl-11 pr-4 py-3.5 rounded-2xl border border-white/60 backdrop-blur-md text-sm focus:outline-none focus:ring-2 focus:ring-red-200 focus:border-red-200 transition shadow-sm" />
           </div>
 
           <div className="flex flex-wrap gap-2 mb-6">
@@ -253,18 +263,18 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
                   <div key={pack.slug || pack.title + idx} className="glass-apple-liquid group">
                     <div className="glass-apple-liquid-inner p-5 sm:p-6 flex flex-col justify-between h-full">
                     <div>
-                      <span className="inline-block text-xs font-semibold text-white bg-red-600 px-3 py-1 rounded-full mb-3">{pack.category}</span>
+                      <span className="inline-block md:text-xs text-[10px] font-semibold text-white bg-red-600 px-3 py-1 rounded-full mb-3">{pack.category}</span>
                       <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
                       <p className="text-sm text-gray-600 mb-3 line-clamp-3">{promptText}</p>
                       {pack.tags && pack.tags.length > 0 && (
                         <div className="flex flex-wrap gap-2 mb-4">
-                          {pack.tags.map((tag, i) => (<span key={i} className="inline-block text-xs px-3 py-1 rounded-lg border border-gray-200 bg-white/60 text-gray-700">{tag}</span>))}
+                          {pack.tags.map((tag, i) => (<span key={i} className="uppercase inline-block text-[10px] px-3 py-1 rounded-lg border border-red-200  bg-gradient-to-l from-white via-red-100 to-white text-gray-700">{tag}</span>))}
                         </div>
                       )}
                     </div>
                     <div className="flex gap-3 mt-auto pt-3 border-t border-gray-200/50">
-                      <button onClick={() => setSelectedPrompt(pack)} className="flex-1 py-2.5 rounded-xl text-sm font-semibold border border-gray-200 bg-white/70 text-gray-700 hover:bg-gray-100 transition-colors">Open Prompt</button>
-                      <button onClick={() => handleCopy(pack)} className="flex-1 py-2.5 rounded-xl text-sm font-semibold glass-btn-red text-white hover:scale-[1.02] transition-colors flex items-center justify-center gap-2">
+                      <button onClick={() => setSelectedPrompt(pack)} className="flex-1 py-2.5 rounded-xl md:text-sm text-xs font-semibold border border-red-200 cursor-pointer text-gray-700 transition-colors">Open Prompt</button>
+                        <button onClick={() => handleCopy(pack)} className="flex-1 py-2.5 rounded-xl md:text-sm text-xs font-semibold glass-btn-red text-white hover:scale-[1.02] transition-colors flex items-center justify-center gap-2 cursor-pointer">
                         <Copy className="h-4 w-4" />{copiedId === pack.title ? "Copied!" : "Copy Prompt"}
                       </button>
                     </div>

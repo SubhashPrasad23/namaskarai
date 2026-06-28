@@ -12,7 +12,6 @@
   initial-value: -45deg;
 }
 
-
 :root {
   --background: #FFFDFC;
   --foreground: #151515;
@@ -90,9 +89,17 @@ h1, h2, h3 {
 }
 
 /* Primary brand red for headings */
-.text-brand { color: #E53935; }
-.bg-brand { background-color: #E53935; }
-.border-brand { border-color: #E53935; }
+.text-brand {
+  color: #E53935;
+}
+
+.bg-brand {
+  background-color: #E53935;
+}
+
+.border-brand {
+  border-color: #E53935;
+}
 
 ::-webkit-scrollbar {
   width: 6px;
@@ -222,7 +229,6 @@ h1, h2, h3 {
    Premium soft glass with floating effect
    =========================== */
 
-
 .glass-card {
   /* background: rgba(255, 255, 255, 0.25); */
   backdrop-filter: blur(12px) saturate(140%);
@@ -312,7 +318,7 @@ h1, h2, h3 {
 }
 
 /* Ensure content inside glass-video-card is above pseudo-elements */
-.glass-video-card > * {
+.glass-video-card>* {
   position: relative;
   z-index: 1;
 }
@@ -344,7 +350,6 @@ h1, h2, h3 {
 
 /* Optional: if using a real image */
 
-
 /* ── Floating pills (top-left / top-right) ── */
 .pill {
   position: absolute;
@@ -365,7 +370,6 @@ h1, h2, h3 {
   letter-spacing: 0.02em;
 }
 
-
 .card-footer {
   padding: 10px 14px 13px;
   /* background: rgba(255, 255, 255, 0.08); */
@@ -385,7 +389,6 @@ h1, h2, h3 {
   font-family: Georgia, 'Times New Roman', serif;
   line-height: 1;
 }
-
 
 .dark-scene {
   border-radius: 24px;
@@ -417,8 +420,6 @@ h1, h2, h3 {
 .dark-scene .footer-link {
   color: rgba(200, 200, 210, 0.60);
 }
-
-
 
 .glass-btn {
   background: linear-gradient(135deg, rgba(239, 68, 68, 0.95) 0%, rgba(185, 28, 28, 0.95) 50%, rgba(220, 38, 38, 0.95) 100%);
@@ -692,17 +693,10 @@ h1, h2, h3 {
   position: relative;
   border-radius: 24px;
   padding: 1.5px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(255, 255, 255, 0.4) 50%,
-    rgba(255, 255, 255, 0.8) 100%
-  );
-  box-shadow:
-    0 1px 2px rgba(0,0,0,0.03),
-    0 4px 8px rgba(0,0,0,0.03),
-    0 8px 16px rgba(0,0,0,0.03),
-    0 16px 32px rgba(0,0,0,0.02);
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 0 20px rgba(255, 255, 255, 0.1);
+
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -710,59 +704,51 @@ h1, h2, h3 {
 .glass-apple-liquid-inner {
   position: relative;
   border-radius: 22px;
-  padding: 32px;
-  background: rgba(255, 255, 255, 0.55);
-  backdrop-filter: blur(40px) saturate(150%);
-  -webkit-backdrop-filter: blur(40px) saturate(150%);
+  padding: 16px;
+  background: #FFFDFC;
+  backdrop-filter: blur(20px) saturate(120%);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
 }
 
 /* ── Hover: slight lift ── */
 .glass-apple-liquid:hover {
   transform: translateY(-2px);
   box-shadow:
-    0 2px 4px rgba(0,0,0,0.04),
-    0 6px 12px rgba(0,0,0,0.04),
-    0 12px 24px rgba(0,0,0,0.04),
-    0 24px 48px rgba(0,0,0,0.03);
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 6px 12px rgba(0, 0, 0, 0.04),
+    0 12px 24px rgba(0, 0, 0, 0.04),
+    0 24px 48px rgba(0, 0, 0, 0.03);
 }
 
 .glass-apple-liquid:hover .glass-apple-liquid-inner {
-  background: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* ── Variant: Colored borders ── */
 .glass-apple-liquid.tint-red {
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.8) 0%,
-    rgba(255,220,220,0.5) 50%,
-    rgba(255,255,255,0.8) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 220, 220, 0.5) 50%,
+      rgba(255, 255, 255, 0.8) 100%);
 }
 
 .glass-apple-liquid.tint-blue {
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.8) 0%,
-    rgba(200,220,255,0.5) 50%,
-    rgba(255,255,255,0.8) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(200, 220, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0.8) 100%);
 }
 
 .glass-apple-liquid.tint-purple {
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.8) 0%,
-    rgba(220,200,255,0.5) 50%,
-    rgba(255,255,255,0.8) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(220, 200, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0.8) 100%);
 }
 
 .glass-apple-liquid.tint-amber {
-  background: linear-gradient(
-    135deg,
-    rgba(255,255,255,0.8) 0%,
-    rgba(255,235,200,0.5) 50%,
-    rgba(255,255,255,0.8) 100%
-  );
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 235, 200, 0.5) 50%,
+      rgba(255, 255, 255, 0.8) 100%);
 }
