@@ -1,0 +1,40 @@
+<svg width="320" height="232" viewBox="14 44 216 156" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Namaskar AI logo">
+  <defs>
+    <linearGradient id="aGrad" x1="54" y1="54" x2="186" y2="202" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#C71F1F" />
+      <stop offset="0.55" stop-color="#DD3A1E" />
+      <stop offset="1" stop-color="#F08A24" />
+    </linearGradient>
+    <linearGradient id="sashGrad" x1="70" y1="146" x2="166" y2="178" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#B81C1E" />
+      <stop offset="1" stop-color="#E66A1A" />
+    </linearGradient>
+  </defs>
+
+  <path d="M22 118C42 96 67 91 89 95C113 84 134 79 160 78C177 63 201 62 223 70C212 84 198 92 184 102C163 103 149 104 136 108C118 119 98 124 76 125C59 130 45 130 22 118Z" fill="#D9D9D9"/>
+
+  <path d="M54 190L116 52L178 190H149L116 121L83 190H54Z" fill="url(#aGrad)"/>
+  <path d="M116 92L137 140H95L116 92Z" fill="#FFF7EF"/>
+
+  <path d="M70 154C95 138 130 136 162 146C156 154 150 162 145 168C122 158 101 159 78 172L70 154Z" fill="url(#sashGrad)"/>
+  <path id="brandArc" d="M79 165C100 151 127 150 148 160" fill="none"/>
+  <text fill="#FFF9F2" font-size="18" font-family="Sora, Manrope, sans-serif" font-weight="800" letter-spacing="0.2">
+    <textPath href="#brandArc" startOffset="8%">namaskar</textPath>
+  </text>
+
+  <g transform="translate(186 64)">
+    <rect x="0" y="0" width="2.8" height="128" fill="#B61919"/>
+    <rect x="6" y="0" width="1.8" height="128" fill="#E44A24"/>
+    <rect x="21" y="0" width="1.8" height="128" fill="#E44A24"/>
+    <rect x="27" y="0" width="2.8" height="128" fill="#B61919"/>
+
+    <g fill="none" stroke="#BE1F1F" stroke-width="1.4" transform="translate(10 6)">
+      <circle cx="5" cy="5" r="5"/><circle cx="5" cy="19" r="5"/><circle cx="5" cy="33" r="5"/><circle cx="5" cy="47" r="5"/>
+      <circle cx="5" cy="61" r="5"/><circle cx="5" cy="75" r="5"/><circle cx="5" cy="89" r="5"/><circle cx="5" cy="103" r="5"/>
+    </g>
+    <g fill="#F08A24" transform="translate(12.4 8.4)">
+      <circle cx="2.6" cy="2.6" r="1.2"/><circle cx="2.6" cy="16.6" r="1.2"/><circle cx="2.6" cy="30.6" r="1.2"/><circle cx="2.6" cy="44.6" r="1.2"/>
+      <circle cx="2.6" cy="58.6" r="1.2"/><circle cx="2.6" cy="72.6" r="1.2"/><circle cx="2.6" cy="86.6" r="1.2"/><circle cx="2.6" cy="100.6" r="1.2"/>
+    </g>
+  </g>
+</svg>

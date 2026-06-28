@@ -1,0 +1,65 @@
+{
+  "common": {
+    "home": "Home",
+    "aiTools": "AI Tools",
+    "aiCourse": "AI Course",
+    "promptPacks": "Prompt Packs",
+    "launchTool": "Launch Tool",
+    "news": "News",
+    "languageToggle": "অসমীয়া",
+    "footer": {
+      "copyright": "© 2026 NamaskarAI. All rights reserved.",
+      "tagline": "Empowering Assam with AI"
+    }
+  },
+  "home": {
+    "title": "Welcome to NamaskarAI",
+    "description": "Your gateway to AI tools, courses, and resources in Assamese and English.",
+    "heroHeading": "Learn AI in Assamese",
+    "heroSubheading": "Namaskar AI helps Assam learners, job seekers, small businesses, and families use prompt packs, tool guides, and step-by-step roadmaps to get real work done"
+  },
+  "aiTools": {
+    "title": "AI Tools",
+    "description": "Explore the best AI tools curated for you.",
+    "heading": "Discover AI Tools",
+    "subheading": "Browse and compare AI tools submitted by creators.",
+    "loading": "Loading tools...",
+    "noTools": "No approved tools yet.",
+    "beFirst": "Be the first to launch your tool →",
+    "toolUrl": "TOOL URL",
+    "package": "PACKAGE",
+    "submitted": "SUBMITTED"
+  },
+  "launchTool": {
+    "title": "Launch Your Tool",
+    "description": "Submit your AI tool to our directory and reach thousands of users.",
+    "heading": "Launch Your AI Tool to Thousands of Users",
+    "subheading": "Submit your tool URL, select a package, and get published in our directory.",
+    "toolUrl": "Tool URL",
+    "selectPackage": "Select Package",
+    "payAndLaunch": "Pay and Launch Tool",
+    "submitting": "Submitting...",
+    "successMessage": "Your tool has been submitted successfully! It will be visible after admin approval.",
+    "errorUrl": "Please enter your tool URL.",
+    "errorInvalidUrl": "Please enter a valid URL (e.g., https://your-tool.com).",
+    "errorPackage": "Please select a package.",
+    "errorSubmit": "Failed to submit. Please try again.",
+    "mostPopular": "Most Popular",
+    "contactUs": "Contact Us"
+  },
+  "promptPacks": {
+    "title": "Prompt Packs",
+    "description": "Ready-to-use AI prompt packs for various use cases.",
+    "heading": "Prompt Packs"
+  },
+  "aiCourse": {
+    "title": "AI Course",
+    "description": "Learn AI with our comprehensive course.",
+    "heading": "AI Course"
+  },
+  "news": {
+    "title": "AI News",
+    "description": "Stay updated with the latest AI news.",
+    "heading": "AI News"
+  }
+}
