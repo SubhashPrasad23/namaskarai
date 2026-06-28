@@ -26,6 +26,7 @@ import {
 import Image from "next/image";
 import VideoCarousel from "@/components/prompts/components/VideoCarousel";
 import { BsAlarm } from "react-icons/bs";
+import DiamondBorder from "@/components/ui/DiamondBorder";
 
 function Reveal({
   children,
@@ -47,15 +48,31 @@ function Reveal({
 }
 
 const heroCards = [
-  { title: "Prompt Packs", desc: "Curated prompts for every need",icon:"/icons/prompt-pack.png" },
-  { title: "Business AI", desc: "Grow your business with AI", icon: "/icons/business-ai.png" },
-  { title: "Career AI", desc: "CV, Interview & Job Support", icon: "/icons/career.png" },
-  { title: "Student Tools", desc: "Study, Notes & Exam Preparation", icon: "/icons/studentTools.png" },
+  {
+    title: "Prompt Packs",
+    desc: "Curated prompts for every need",
+    icon: "/icons/prompt-pack.png",
+  },
+  {
+    title: "Business AI",
+    desc: "Grow your business with AI",
+    icon: "/icons/business-ai.png",
+  },
+  {
+    title: "Career AI",
+    desc: "CV, Interview & Job Support",
+    icon: "/icons/career.png",
+  },
+  {
+    title: "Student Tools",
+    desc: "Study, Notes & Exam Preparation",
+    icon: "/icons/studentTools.png",
+  },
 ];
 
 const stats = [
   {
-    icon:"/icons/learner.png",
+    icon: "/icons/learner.png",
     value: "25K+",
     label: "Learners in Assam",
   },
@@ -83,38 +100,71 @@ const tenMinuteSteps = [
 ];
 
 const categories = [
-  { title: "Career & Job", desc: "CV, Interview, Skill roadmap",icon:"/icons/briefcase.png" },
-  { title: "Students & Aspirers", desc: "Exam notes, Study discipline", icon: "/icons/student.png" },
-  { title: "Small Business", desc: "Sales, WhatsApp Templates", icon: "/icons/house.png" },
-  { title: "Parents & Family", desc: "Safe AI rules, Child guidance", icon: "/icons/family.png" },
+  {
+    title: "Career & Job",
+    desc: "CV, Interview, Skill roadmap",
+    icon: "/icons/briefcase.png",
+  },
+  {
+    title: "Students & Aspirers",
+    desc: "Exam notes, Study discipline",
+    icon: "/icons/student.png",
+  },
+  {
+    title: "Small Business",
+    desc: "Sales, WhatsApp Templates",
+    icon: "/icons/house.png",
+  },
+  {
+    title: "Parents & Family",
+    desc: "Safe AI rules, Child guidance",
+    icon: "/icons/family.png",
+  },
 ];
 
 const pillarGuides = [
   {
     title: "AI in Assamese",
     desc: "Beginner-first guide with core terms and a practical starting path.",
-    icon: <BookOpen />
+    icon: <BookOpen />,
   },
   {
     title: "ChatGPT in Assamese",
     desc: "Setup, daily use-cases, and safe usage checklist in one page.",
-    icon: <MessageSquareText />
+    icon: <MessageSquareText />,
   },
   {
     title: "AI Course in Assamese",
     desc: "Explore curriculum, tracks, and enrollment flow in one page.",
-    icon: <GraduationCap  />
+    icon: <GraduationCap />,
   },
 ];
 
 const longFormGuides = [
   {
-    title: "Learn AI in 30 Days", icon: <AlarmClockCheck className="h-4 w-4 text-red-600" /> },
-  { title: "Best AI Course Comparison", icon: <ChartNoAxesCombined className="h-4 w-4 text-red-600" />},
-  { title: "Learning Assamese with AI", icon: <BookOpen className="h-4 w-4 text-red-600" /> },
-  { title: "Assamese LLM Guide", icon: <Brain className="h-4 w-4 text-red-600" /> },
-  { title: "Editorial Policy", icon: <FileText className="h-4 w-4 text-red-600" /> },
-  { title: "Press & Collaboration", icon: <Users2 className="h-4 w-4 text-red-600" /> },
+    title: "Learn AI in 30 Days",
+    icon: <AlarmClockCheck className="h-4 w-4 text-red-600" />,
+  },
+  {
+    title: "Best AI Course Comparison",
+    icon: <ChartNoAxesCombined className="h-4 w-4 text-red-600" />,
+  },
+  {
+    title: "Learning Assamese with AI",
+    icon: <BookOpen className="h-4 w-4 text-red-600" />,
+  },
+  {
+    title: "Assamese LLM Guide",
+    icon: <Brain className="h-4 w-4 text-red-600" />,
+  },
+  {
+    title: "Editorial Policy",
+    icon: <FileText className="h-4 w-4 text-red-600" />,
+  },
+  {
+    title: "Press & Collaboration",
+    icon: <Users2 className="h-4 w-4 text-red-600" />,
+  },
 ];
 
 const newsItems = [
@@ -312,7 +362,7 @@ export default function HomePage() {
                 </button>
               </div>
             </div>
-{/* hero card */}
+            {/* hero card */}
             <div className="lg:col-span-6 relative hidden md:block">
               <div className="relative grid grid-cols-2 ml-auto lg:gap-10 gap-4">
                 {heroCards.map((card, i) => (
@@ -393,7 +443,6 @@ export default function HomePage() {
       {/* Today&apos;s 10-Minute AI Start */}
       <section className=" z-50 py-6">
         <Reveal>
-
           <div className="mx-auto glass-card p-0.5 ">
             <div className="glass-card p-4 backdrop-blur-xs">
               <div className="flex items-center gap-3 mb-5">
@@ -439,14 +488,12 @@ export default function HomePage() {
                       className="glass-card bg-white/30 px-3 py-4 flex md:flex-row flex-col justify-center md:items-start items-center gap-3 rounded-2xl"
                     >
                       <div className=" w-11 h-11 rounded-2xl bg-slate-50  flex items-center justify-center shrink-0">
-
                         <Image
                           src={cat.icon}
                           alt={cat.title}
                           width={40}
                           height={40}
                         />
-
                       </div>
 
                       <div className="w-full h-full flex flex-col justify-between">
@@ -470,14 +517,15 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-        </div>
+          </div>
         </Reveal>
-
       </section>
 
-      {/* pillar guide */}
+      <DiamondBorder />
 
-      <section className=" py-12 z-50">
+
+      {/* pillar guide */}
+      <section className="z-50">
         <div className="mx-auto text-center">
           <Reveal>
             <h2 className="text-2xl sm:text-4xl font-bold text-red-700 mb-2 tracking-tight">
@@ -536,9 +584,10 @@ export default function HomePage() {
           </Reveal>
         </div>
       </section>
+      <DiamondBorder />
 
       {/* What&apos;s New in AI */}
-      <section className=" py-12 z-50">
+      <section className="z-50">
         <div className=" text-center">
           <Reveal>
             <h2 className="text-2xl sm:text-4xl font-bold text-red-600 mb-2 tracking-tight">
@@ -556,51 +605,51 @@ export default function HomePage() {
             {newsItems.map((news, i) => (
               <Reveal key={news.title} delay={i * 0.1}>
                 <div className="glass-card p-1">
-                <div className="glass-card text-left group h-full flex flex-col backdrop-blur-xs">
-                  {/* Image */}
-                  <div className="h-48 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center rounded-t-[1.5rem] overflow-hidden relative">
-                    <Newspaper className="h-10 w-10 text-slate-500/50" />
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5 pt-0 flex flex-col flex-1">
-                    {/* Badge icon overlapping image */}
-                    <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center -mt-5 mb-4 relative z-10 border-2 border-white shadow-md">
-                      <Newspaper className="h-4 w-4 text-red-600" />
+                  <div className="glass-card text-left group h-full flex flex-col backdrop-blur-xs">
+                    {/* Image */}
+                    <div className="h-48 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center rounded-t-[1.5rem] overflow-hidden relative">
+                      <Newspaper className="h-10 w-10 text-slate-500/50" />
                     </div>
 
-                    <h3 className="font-bold text-slate-900 text-base mb-2 line-clamp-2 leading-snug">
-                      {news.title}
-                    </h3>
-                    <p className="text-[13px] text-slate-500 mb-4 line-clamp-3 leading-relaxed flex-1">
-                      {news.excerpt}
-                    </p>
+                    {/* Content */}
+                    <div className="p-5 pt-0 flex flex-col flex-1">
+                      {/* Badge icon overlapping image */}
+                      <div className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center -mt-5 mb-4 relative z-10 border-2 border-white shadow-md">
+                        <Newspaper className="h-4 w-4 text-red-600" />
+                      </div>
 
-                    <div className="flex items-center justify-between gap-2 mb-4">
-                      <div className="flex items-center gap-3">
-                        <span className="inline-block text-[11px] font-medium text-red-700 border border-red-300 bg-white rounded-full px-2.5 py-1">
-                          {news.tag}
-                        </span>
-                        <span className="text-[11px] text-slate-400 flex items-center gap-1">
-                          <Clock className="h-3 w-3" /> {news.readTime}
+                      <h3 className="font-bold text-slate-900 text-base mb-2 line-clamp-2 leading-snug">
+                        {news.title}
+                      </h3>
+                      <p className="text-[13px] text-slate-500 mb-4 line-clamp-3 leading-relaxed flex-1">
+                        {news.excerpt}
+                      </p>
+
+                      <div className="flex items-center justify-between gap-2 mb-4">
+                        <div className="flex items-center gap-3">
+                          <span className="inline-block text-[11px] font-medium text-red-700 border border-red-300 bg-white rounded-full px-2.5 py-1">
+                            {news.tag}
+                          </span>
+                          <span className="text-[11px] text-slate-400 flex items-center gap-1">
+                            <Clock className="h-3 w-3" /> {news.readTime}
+                          </span>
+                        </div>
+                        <span className="text-[11px] text-slate-400">
+                          {news.date}
                         </span>
                       </div>
-                      <span className="text-[11px] text-slate-400">
-                        {news.date}
-                      </span>
-                    </div>
 
-                    <Link
-                      href="/news"
-                      className="glass-btn-pink w-full flex items-center justify-center py-3.5 text-sm font-semibold text-red-600 hover:text-red-700 transition-colors"
-                    >
-                      <span className="flex items-center gap-3">
-                        Read More
-                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                      </span>
-                    </Link>
+                      <Link
+                        href="/news"
+                        className="glass-btn-pink w-full flex items-center justify-center py-3.5 text-sm font-semibold text-red-600 hover:text-red-700 transition-colors"
+                      >
+                        <span className="flex items-center gap-3">
+                          Read More
+                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                        </span>
+                      </Link>
+                    </div>
                   </div>
-                </div>
                 </div>
               </Reveal>
             ))}
@@ -608,8 +657,10 @@ export default function HomePage() {
         </div>
       </section>
 
+      <DiamondBorder />
+
       {/* Join Our Community */}
-      <section id="community" className=" py-12">
+      <section id="community" className="">
         <div className="mx-auto  text-center">
           <Reveal>
             <div className="flex items-center justify-center gap-3 mb-3">
@@ -700,6 +751,8 @@ export default function HomePage() {
           </AnimatePresence>
         </div>
       </section>
+
+      <DiamondBorder />
 
       {/* Latest Videos */}
       <section className=" z-50">

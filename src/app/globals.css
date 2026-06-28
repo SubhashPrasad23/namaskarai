@@ -72,23 +72,50 @@ html.lenis body {
   overflow: hidden;
 }
 
-body {
-  background: url('/images/bg.jpeg') no-repeat center center fixed;
-  background-size: cover;
-  color: var(--foreground);
-  font-family: var(--font-sans, "Inter", system-ui, -apple-system, sans-serif);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  letter-spacing: -0.01em;
+@layer base {
+  body {
+    @apply text-foreground antialiased tracking-tight;
+    font-family: var(--font-sans, "Inter", system-ui, -apple-system, sans-serif);
+    -moz-osx-font-smoothing: grayscale;
+    background-image: url('/images/bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: left center;
+  }
 }
 
-/* Premium heading font */
+/* Media query OUTSIDE @layer */
+@media (min-width: 768px) {
+  body {
+    background-position: center center;
+  }
+}
+
+@layer base {
+  body {
+    @apply text-foreground antialiased tracking-tight;
+    font-family: var(--font-sans, "Inter", system-ui, -apple-system, sans-serif);
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Background */
+    background-image: url('/images/bg.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: left center;
+
+    @media (min-width: 768px) {
+      background-position: center center;
+    }
+  }
+}
+
 h1, h2, h3 {
   font-family: var(--font-heading), "Plus Jakarta Sans", var(--font-sans), system-ui, sans-serif;
   letter-spacing: -0.025em;
 }
 
-/* Primary brand red for headings */
 .text-brand {
   color: #E53935;
 }
@@ -134,11 +161,6 @@ h1, h2, h3 {
   color: var(--primary-foreground);
 }
 
-/* ===========================
-   GLASSMORPHISM - HERO CARDS
-   Premium soft glass with floating effect,
-   double border, ambient glow
-   =========================== */
 .glass-hero-card {
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(12px) saturate(140%);
@@ -146,14 +168,11 @@ h1, h2, h3 {
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 1.5rem;
   box-shadow:
-    /* Multi-layer floating shadows */
     0 4px 16px rgba(0, 0, 0, 0.04),
     0 8px 32px rgba(0, 0, 0, 0.03),
     0 16px 48px rgba(0, 0, 0, 0.02),
-    /* Soft ambient glow */
     0 0 40px rgba(255, 255, 255, 0.18),
     0 0 80px rgba(255, 220, 210, 0.06),
-    /* Inner double-border highlight */
     inset 0 1px 1px rgba(255, 255, 255, 0.75),
     inset 0 -1px 1px rgba(255, 255, 255, 0.2),
     inset 0 0 0 1px rgba(255, 255, 255, 0.18);
@@ -162,7 +181,6 @@ h1, h2, h3 {
   overflow: visible;
 }
 
-/* Inner border (double border effect) */
 .glass-hero-card::before {
   content: '';
   position: absolute;
@@ -176,7 +194,6 @@ h1, h2, h3 {
   margin: 3px;
 }
 
-/* Top highlight shine */
 .glass-hero-card::after {
   content: '';
   position: absolute;
@@ -224,26 +241,18 @@ h1, h2, h3 {
     inset 0 0 0 1px rgba(255, 255, 255, 0.22);
 }
 
-/* ===========================
-   GLASSMORPHISM - GENERAL CARDS
-   Premium soft glass with floating effect
-   =========================== */
 
 .glass-card {
-  /* background: rgba(255, 255, 255, 0.25); */
   backdrop-filter: blur(12px) saturate(140%);
   -webkit-backdrop-filter: blur(12px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 12px;
 
   box-shadow:
-    /* Outer floating shadow layers */
     0 4px 16px rgba(0, 0, 0, 0.04),
     0 8px 32px rgba(0, 0, 0, 0.03),
     0 16px 48px rgba(0, 0, 0, 0.02),
-    /* Ambient glow */
     0 0 40px rgba(255, 255, 255, 0.15),
-    /* Inner double-border highlight */
     inset 0 1px 1px rgba(255, 255, 255, 0.7),
     inset 0 -1px 1px rgba(255, 255, 255, 0.2),
     inset 0 0 0 1px rgba(255, 255, 255, 0.15);
@@ -259,8 +268,6 @@ h1, h2, h3 {
   left: 0;
   right: 0;
   bottom: 0;
-  /* border-radius: 1.5rem; */
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
   pointer-events: none;
   margin: 2px;
 }
@@ -281,9 +288,8 @@ h1, h2, h3 {
   position: relative;
   border-radius: 28px;
   padding: 5px;
-  /* background: rgba(255, 255, 255, 0.60); */
   border: 1px solid rgba(255, 255, 255, 0.6);
- 
+
 
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.45),
@@ -304,7 +310,6 @@ h1, h2, h3 {
     inset 0 1px 0 rgba(255, 255, 255, 0.95);
 }
 
-/* Second outer ring — sits 2px outside the card */
 .glass-video-card::after {
   content: '';
   position: absolute;
@@ -315,21 +320,17 @@ h1, h2, h3 {
   z-index: 0;
 }
 
-/* Diagonal shine sweep — disabled to prevent whitish overlay on content */
 .glass-video-card::before {
   content: '';
   display: none;
 }
 
-/* Ensure content inside glass-video-card is above pseudo-elements */
 .glass-video-card>* {
   position: relative;
   z-index: 1;
 }
 
-/* ─────────────────────────────────────────
-       CARD INNER — the content container
-    ───────────────────────────────────────── */
+
 .card-inner {
   position: relative;
   border-radius: 25px;
@@ -339,9 +340,6 @@ h1, h2, h3 {
   z-index: 1;
 }
 
-/* ─────────────────────────────────────────
-       MEDIA AREA (replace with <img> or <video>)
-    ───────────────────────────────────────── */
 .card-media {
   position: relative;
   width: 100%;
@@ -352,9 +350,7 @@ h1, h2, h3 {
   justify-content: center;
 }
 
-/* Optional: if using a real image */
 
-/* ── Floating pills (top-left / top-right) ── */
 .pill {
   position: absolute;
   top: 10px;
@@ -376,7 +372,6 @@ h1, h2, h3 {
 
 .card-footer {
   padding: 10px 14px 13px;
-  /* background: rgba(255, 255, 255, 0.08); */
 }
 
 .brand-row {
@@ -498,9 +493,6 @@ h1, h2, h3 {
   transform: translateY(-1px);
 }
 
-/* ===========================
-   GLASSMORPHISM - NAVIGATION
-   =========================== */
 .glass-nav {
   background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(24px) saturate(180%);
@@ -524,9 +516,7 @@ h1, h2, h3 {
   border-radius: 1rem;
 }
 
-/* ===========================
-   DECORATIVE
-   =========================== */
+
 .assamese-border {
   height: 4px;
   background: repeating-linear-gradient(90deg,
@@ -541,11 +531,7 @@ h1, h2, h3 {
   opacity: 0.6;
 }
 
-/* ===========================
-   GLASSMORPHISM - GLOSSY CTA PILL BUTTON
-   (Open Guide, Read More style)
-   Premium glossy with reflections
-   =========================== */
+
 .glass-btn-pink {
   background: rgba(255, 200, 180, 0.35);
   backdrop-filter: blur(8px) saturate(130%);
@@ -564,7 +550,6 @@ h1, h2, h3 {
   overflow: hidden;
 }
 
-/* Top-left glossy reflection */
 .glass-btn-pink::before {
   content: '';
   position: absolute;
@@ -577,7 +562,6 @@ h1, h2, h3 {
   pointer-events: none;
 }
 
-/* Bottom-right subtle highlight */
 .glass-btn-pink::after {
   content: '';
   position: absolute;
@@ -602,11 +586,7 @@ h1, h2, h3 {
   transform: translateY(-1px);
 }
 
-/* ===========================
-   GLOSSY RED CTA BUTTON
-   "Start Learning" — pill shape with 
-   top glossy arc, corner shiny, floating shadow
-   =========================== */
+
 .glass-btn-red {
   background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
   border: none;
@@ -631,10 +611,7 @@ h1, h2, h3 {
     inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
-/* ===========================
-   GLASS OUTLINE DEMO BUTTON
-   "See Community Demos" — clean glass outline
-   =========================== */
+
 .glass-btn-outline-demo {
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(10px) saturate(140%);
@@ -652,7 +629,6 @@ h1, h2, h3 {
   overflow: hidden;
 }
 
-/* Inner border */
 .glass-btn-outline-demo::before {
   content: '';
   position: absolute;
@@ -686,13 +662,6 @@ h1, h2, h3 {
   scrollbar-width: none;
 }
 
-/* ===========================
-   APPLE LIQUID GLASS CARD
-   Clean frosted glass with blur,
-   subtle border, soft 3D elevation
-   =========================== */
-
-/* ── Outer wrapper: subtle border + soft 3D shadow ── */
 .glass-apple-liquid {
   position: relative;
   border-radius: 24px;
@@ -704,7 +673,6 @@ h1, h2, h3 {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── Inner content panel: frosted glass fill ── */
 .glass-apple-liquid-inner {
   position: relative;
   border-radius: 22px;
@@ -714,7 +682,6 @@ h1, h2, h3 {
   -webkit-backdrop-filter: blur(20px) saturate(120%);
 }
 
-/* ── Hover: slight lift ── */
 .glass-apple-liquid:hover {
   transform: translateY(-2px);
   box-shadow:
@@ -728,7 +695,6 @@ h1, h2, h3 {
   background: rgba(255, 255, 255, 0.12);
 }
 
-/* ── Variant: Colored borders ── */
 .glass-apple-liquid.tint-red {
   background: linear-gradient(135deg,
       rgba(255, 255, 255, 0.8) 0%,
