@@ -10,7 +10,7 @@ export default function Jhapi() {
 
   return (
     <div
-      className=" fixed md:top-1/2 top-2/5 -z-0 pointer-events-none right-[-120px] sm:right-[-180px] md:right-[-220px] lg:right-[-280px] xl:right-[-320px]"
+      className=" fixed md:top-1/2 top-2/5 -z-0 pointer-events-none right-[-150px] sm:right-[-180px] md:right-[-220px] lg:right-[-280px] xl:right-[-320px]"
       style={{
         transform: "translateY(-50%)",
       }}

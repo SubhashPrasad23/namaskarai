@@ -20,9 +20,12 @@ import {
   Users2,
   FileText,
   Brain,
+  ChartNoAxesCombined,
+  AlarmClockCheck,
 } from "lucide-react";
 import Image from "next/image";
 import VideoCarousel from "@/components/prompts/components/VideoCarousel";
+import { BsAlarm } from "react-icons/bs";
 
 function Reveal({
   children,
@@ -105,8 +108,9 @@ const pillarGuides = [
 ];
 
 const longFormGuides = [
-  { title: "Learn AI in 30 Days" },
-  { title: "Best AI Course Comparison" },
+  {
+    title: "Learn AI in 30 Days", icon: <AlarmClockCheck className="h-4 w-4 text-red-600" /> },
+  { title: "Best AI Course Comparison", icon: <ChartNoAxesCombined className="h-4 w-4 text-red-600" />},
   { title: "Learning Assamese with AI", icon: <BookOpen className="h-4 w-4 text-red-600" /> },
   { title: "Assamese LLM Guide", icon: <Brain className="h-4 w-4 text-red-600" /> },
   { title: "Editorial Policy", icon: <FileText className="h-4 w-4 text-red-600" /> },
@@ -308,7 +312,7 @@ export default function HomePage() {
                 </button>
               </div>
             </div>
-
+{/* hero card */}
             <div className="lg:col-span-6 relative hidden md:block">
               <div className="relative grid grid-cols-2 ml-auto lg:gap-10 gap-4">
                 {heroCards.map((card, i) => (
@@ -388,9 +392,10 @@ export default function HomePage() {
 
       {/* Today&apos;s 10-Minute AI Start */}
       <section className=" z-50 py-6">
-        <div className="mx-auto ">
-          <Reveal>
-            <div className="glass-card p-4 rounded-2xl">
+        <Reveal>
+
+          <div className="mx-auto glass-card p-0.5 ">
+            <div className="glass-card p-4 backdrop-blur-xs">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center">
                   <Clock className="h-full w-full text-red-600" />
@@ -405,7 +410,7 @@ export default function HomePage() {
                   {tenMinuteSteps.map((step, index) => (
                     <div
                       key={step.n}
-                      className="relative flex items-start gap-3 "
+                      className="relative flex items-start gap-3"
                     >
                       <div className="relative flex flex-col items-center">
                         <div className="w-6 h-6 rounded-full bg-red-600 text-white flex items-center justify-center text-[10px] font-bold z-10">
@@ -431,7 +436,7 @@ export default function HomePage() {
                   {categories.map((cat) => (
                     <div
                       key={cat.title}
-                      className="glass-card px-3 py-4 flex md:flex-row flex-col justify-center md:items-start items-center gap-3 rounded-2xl"
+                      className="glass-card bg-white/30 px-3 py-4 flex md:flex-row flex-col justify-center md:items-start items-center gap-3 rounded-2xl"
                     >
                       <div className=" w-11 h-11 rounded-2xl bg-slate-50  flex items-center justify-center shrink-0">
 
@@ -465,8 +470,9 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-          </Reveal>
         </div>
+        </Reveal>
+
       </section>
 
       {/* pillar guide */}
@@ -485,7 +491,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-7 mb-5">
             {pillarGuides.map((guide, i) => (
               <Reveal key={guide.title} delay={i * 0.1}>
-                <div className="glass-card p-4 text-left rounded-2xl h-full backdrop-blur-xs">
+                <div className="glass-card p-4 text-left rounded-2xl h-full backdrop-blur-xs bg-white/30">
                   <div className="w-10 h-10 rounded-full  border border-red-200 text-red-700 p-1 flex items-center justify-center mb-4 shadow-inner shadow-red-100">
                     {guide.icon}
                   </div>
@@ -504,7 +510,7 @@ export default function HomePage() {
           </div>
 
           <Reveal>
-            <div className="glass-card p-7 text-left rounded-2xl">
+            <div className="glass-card p-7 text-left rounded-2xl backdrop-blur-xs ">
               <h3 className="text-base font-bold text-slate-900 mb-5">
                 Search-targeted long-form guides
               </h3>
@@ -512,7 +518,7 @@ export default function HomePage() {
                 {longFormGuides.map((guide) => (
                   <div
                     key={guide.title}
-                    className="glass-card flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-red-50/40 transition-all cursor-pointer group"
+                    className="glass-card bg-white/30 flex items-center justify-between rounded-2xl px-4 py-3 hover:bg-red-50/40 transition-all cursor-pointer group"
                   >
                     <div className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center shrink-0">
@@ -549,7 +555,8 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
             {newsItems.map((news, i) => (
               <Reveal key={news.title} delay={i * 0.1}>
-                <div className="glass-card text-left group h-full flex flex-col rounded-2xl">
+                <div className="glass-card p-1">
+                <div className="glass-card text-left group h-full flex flex-col backdrop-blur-xs">
                   {/* Image */}
                   <div className="h-48 bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center rounded-t-[1.5rem] overflow-hidden relative">
                     <Newspaper className="h-10 w-10 text-slate-500/50" />
@@ -594,6 +601,7 @@ export default function HomePage() {
                     </Link>
                   </div>
                 </div>
+                </div>
               </Reveal>
             ))}
           </div>
@@ -617,22 +625,22 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="glass-card inline-flex items-center gap-0.5 rounded-2xl p-1 mb-5">
+            <div className="glass-card inline-flex items-center gap-0.5 rounded-2xl p-1 mb-5 glass-card">
               <button
                 onClick={() => setActiveTab("tools")}
-                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-[13px] font-medium transition-colors ${activeTab === "tools" ? "glass-card shadow-inner shadow-white" : " hover:text-slate-700"}`}
+                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-[13px] font-medium transition-colors ${activeTab === "tools" ? "glass-card bg-gradient-to-t from-white via-red-300 to-white shadow-inner shadow-white" : " hover:text-slate-700"}`}
               >
                 <Wrench className="h-3.5 w-3.5 text-red-600" /> Tools
               </button>
               <button
                 onClick={() => setActiveTab("tutorials")}
-                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-[13px] font-medium transition-colors ${activeTab === "tutorials" ? "glass-card shadow-inner shadow-white" : " hover:text-slate-700"}`}
+                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-[13px] font-medium transition-colors ${activeTab === "tutorials" ? "glass-card  bg-gradient-to-t from-white via-red-300 to-white shadow-inner shadow-white" : " hover:text-slate-700"}`}
               >
                 <BookOpen className="h-3.5 w-3.5 text-red-600" /> Tutorials
               </button>
               <button
                 onClick={() => setActiveTab("insights")}
-                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-[13px] font-medium transition-colors ${activeTab === "insights" ? "glass-card shadow-inner shadow-white" : " hover:text-slate-700"}`}
+                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-[13px] font-medium transition-colors ${activeTab === "insights" ? "glass-card  bg-gradient-to-t from-white via-red-300 to-white shadow-inner shadow-white" : " hover:text-slate-700"}`}
               >
                 <Lightbulb className="h-3.5 w-3.5 text-red-600" /> Insights
               </button>
