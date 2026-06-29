@@ -1,7 +1,9 @@
+import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase/server";
 
 export async function GET() {
+  const supabase = await createClient();
+
   const { data, error } = await supabase
     .from("prompt")
     .select("*")
@@ -15,12 +17,23 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const supabase = await createClient();
+
   const body = await request.json();
+
   const { title, title_as, category, prompt, prompt_as, tags, slug } = body;
 
   const { data, error } = await supabase
     .from("prompt")
-    .insert({ title, title_as, category, prompt, prompt_as, tags, slug })
+    .insert({
+      title,
+      title_as,
+      category,
+      prompt,
+      prompt_as,
+      tags,
+      slug,
+    })
     .select()
     .single();
 
@@ -32,16 +45,30 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
+  const supabase = await createClient();
+
   const body = await request.json();
+
   const { id, title, title_as, category, prompt, prompt_as, tags, slug } = body;
+  console.log(body)
 
   const { data, error } = await supabase
     .from("prompt")
-    .update({ title, title_as, category, prompt, prompt_as, tags, slug })
+    .update({
+      title,
+      title_as,
+      category,
+      prompt,
+      prompt_as,
+      tags,
+      slug,
+    })
     .eq("id", id)
     .select()
     .single();
 
+
+    console.log(error,"error")
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -49,8 +76,13 @@ export async function PUT(request: Request) {
   return NextResponse.json(data);
 }
 
+
+
 export async function DELETE(request: Request) {
+  const supabase = await createClient();
+
   const { searchParams } = new URL(request.url);
+
   const id = searchParams.get("id");
 
   if (!id) {
@@ -63,5 +95,7 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
-  return NextResponse.json({ success: true });
+  return NextResponse.json({
+    success: true,
+  });
 }

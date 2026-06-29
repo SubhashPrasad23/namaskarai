@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import Jhapi from "@/components/layout/Jhapi";
+import Japi from "@/components/layout/Japi";
 
 export default function UserLayout({ children }: { children: React.ReactNode }) {
   const lenisRef = useRef<Lenis | null>(null);
@@ -39,7 +39,7 @@ export default function UserLayout({ children }: { children: React.ReactNode }) 
       <Navbar />
       <main className="flex-1 relative">{children}</main>
       <Footer />
-      {isHome && <Jhapi />}
+      {isHome && <Japi />}
     </>
   );
 }

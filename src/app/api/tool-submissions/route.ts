@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase/server";
+import { createClient } from "@/lib/supabase/server";
 
 export async function GET() {
+  const supabase = await createClient();
+
   const { data, error } = await supabase
     .from("tool_submissions")
     .select("*")
@@ -15,12 +17,20 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const supabase = await createClient();
+
   const body = await request.json();
+
   const { url, package: pkg, release_date, status } = body;
 
   const { data, error } = await supabase
     .from("tool_submissions")
-    .insert({ url, package: pkg, release_date, status })
+    .insert({
+      url,
+      package: pkg,
+      release_date,
+      status,
+    })
     .select()
     .single();
 
@@ -32,12 +42,17 @@ export async function POST(request: Request) {
 }
 
 export async function PUT(request: Request) {
+  const supabase = await createClient();
+
   const body = await request.json();
+
   const { id, status } = body;
 
   const { data, error } = await supabase
     .from("tool_submissions")
-    .update({ status })
+    .update({
+      status,
+    })
     .eq("id", id)
     .select()
     .single();

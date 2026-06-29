@@ -208,6 +208,19 @@ h1, h2, h3 {
   pointer-events: none;
 }
 
+.glass-hero-card:hover {
+  background: rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.05),
+    0 12px 40px rgba(0, 0, 0, 0.04),
+    0 20px 60px rgba(0, 0, 0, 0.03),
+    0 0 50px rgba(255, 255, 255, 0.22),
+    0 0 90px rgba(255, 220, 210, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 0.85),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+
 @-webkit-keyframes spin-border {
   from {
     --angle-1: 0deg;
@@ -228,18 +241,8 @@ h1, h2, h3 {
   }
 }
 
-.glass-hero-card:hover {
-  background: rgba(255, 255, 255, 0.28);
-  box-shadow:
-    0 6px 20px rgba(0, 0, 0, 0.05),
-    0 12px 40px rgba(0, 0, 0, 0.04),
-    0 20px 60px rgba(0, 0, 0, 0.03),
-    0 0 50px rgba(255, 255, 255, 0.22),
-    0 0 90px rgba(255, 220, 210, 0.08),
-    inset 0 1px 2px rgba(255, 255, 255, 0.85),
-    inset 0 -1px 1px rgba(255, 255, 255, 0.25),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.22);
-}
+
+
 
 
 .glass-card {
@@ -283,6 +286,8 @@ h1, h2, h3 {
     inset 0 0 0 1px rgba(255, 255, 255, 0.2);
   transform: translateY(-1px);
 }
+
+
 
 .glass-video-card {
   position: relative;
@@ -516,20 +521,6 @@ h1, h2, h3 {
   border-radius: 1rem;
 }
 
-
-.assamese-border {
-  height: 4px;
-  background: repeating-linear-gradient(90deg,
-      #dc2626 0px,
-      #dc2626 8px,
-      transparent 8px,
-      transparent 12px,
-      #b91c1c 12px,
-      #b91c1c 14px,
-      transparent 14px,
-      transparent 18px);
-  opacity: 0.6;
-}
 
 
 .glass-btn-pink {

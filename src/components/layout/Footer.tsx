@@ -23,7 +23,7 @@ export default function Footer() {
   return (
     <footer className="w-full">
       <div className="mx-auto w-full md:max-w-5/6 pb-0 md:pb-10 px-0 md:px-4 sm:px-6 lg:px-0">
-        <div className="glass-card px-5 py-6 sm:px-6 md:rounded-2xl rounded-none! shadow-inner shadow-white backdrop-blur-xs z-50">
+        <div className="glass-card px-5 py-6 sm:px-6 md:rounded-2xl! rounded-none! shadow-inner shadow-white backdrop-blur-xs z-50">
           <div className="flex flex-col items-center text-center md:flex-row md:items-start md:text-left md:justify-between gap-6 sm:gap-8">
             <div className="w-full md:w-auto flex flex-col items-center md:items-start">
               <div className="flex items-center gap-3">

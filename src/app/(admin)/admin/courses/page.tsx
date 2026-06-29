@@ -18,18 +18,31 @@ export default function AdminCoursesPage() {
   const [showModal, setShowModal] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [form, setForm] = useState({ name: "", name_as: "", description: "", description_as: "" });
+  const [saving, setSaving] = useState(false);
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  async function loadCourses() {
+    try {
+      const res = await fetch("/api/courses");
+
+      if (!res.ok) {
+        throw new Error("Failed to fetch courses");
+      }
+
+      const data = await res.json();
+
+      if (Array.isArray(data)) {
+        setCourses(data);
+      }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(() => {
     loadCourses();
   }, []);
-
-  async function loadCourses() {
-    const res = await fetch("/api/courses");
-    const data = await res.json();
-    if (Array.isArray(data)) setCourses(data);
-    setLoading(false);
-  }
-
   function resetForm() {
     setForm({ name: "", name_as: "", description: "", description_as: "" });
     setEditingId(null);
@@ -38,20 +51,71 @@ export default function AdminCoursesPage() {
 
   async function handleSave() {
     if (!form.name.trim()) return;
-    const payload = { name: form.name, name_as: form.name_as, description: form.description, description_as: form.description_as };
-    if (editingId) {
-      await fetch("/api/courses", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: editingId, ...payload }) });
-    } else {
-      await fetch("/api/courses", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(payload) });
+
+    setSaving(true);
+
+    try {
+      const payload = {
+        name: form.name,
+        name_as: form.name_as,
+        description: form.description,
+        description_as: form.description_as,
+      };
+
+      let res: Response;
+
+      if (editingId) {
+        res = await fetch("/api/courses", {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: editingId,
+            ...payload,
+          }),
+        });
+      } else {
+        res = await fetch("/api/courses", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+      }
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        console.error("Failed to save course:", errorData);
+        alert(errorData?.error || "Failed to save course");
+        return;
+      }
+
+      await loadCourses();
+      resetForm();
+    } catch (error) {
+      console.error("Error saving course:", error);
+      alert("An error occurred while saving the course");
+    } finally {
+      setSaving(false);
     }
-    loadCourses();
-    resetForm();
   }
 
   async function handleDelete(id: string) {
     if (!confirm("Delete this course?")) return;
-    await fetch(`/api/courses?id=${id}`, { method: "DELETE" });
-    loadCourses();
+
+    setDeletingId(id);
+
+    try {
+      await fetch(`/api/courses?id=${id}`, {
+        method: "DELETE",
+      });
+
+      await loadCourses();
+    } finally {
+      setDeletingId(null);
+    }
   }
 
   function handleEdit(course: Course) {
@@ -84,8 +148,14 @@ export default function AdminCoursesPage() {
               </div>
               <div className="flex items-center gap-2 ml-4">
                 <button onClick={() => handleEdit(course)} className="px-3 py-1.5 text-xs rounded-lg border border-gray-200 hover:bg-gray-50">Edit</button>
-                <button onClick={() => handleDelete(course.id)} className="px-3 py-1.5 text-xs rounded-lg border border-red-200 text-red-600 hover:bg-red-50">Delete</button>
-              </div>
+                <button
+                  disabled={deletingId === course.id}
+                  onClick={() => handleDelete(course.id)}
+                >
+                  {deletingId === course.id
+                    ? "Deleting..."
+                    : "Delete"}
+                </button>              </div>
             </div>
           ))}
         </div>
@@ -113,8 +183,20 @@ export default function AdminCoursesPage() {
                 <textarea value={form.description_as} onChange={(e) => setForm({ ...form, description_as: e.target.value })} rows={2} className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm resize-y" placeholder="\u0985\u09B8\u09AE\u09C0\u09AF\u09BC\u09BE \u09AC\u09BF\u09F1\u09B0\u09A3..." />
               </div>
               <div className="flex gap-2 pt-2">
-                <Button variant="primary" size="sm" onClick={handleSave}>{editingId ? "Update" : "Save"}</Button>
-                <Button variant="ghost" size="sm" onClick={resetForm}>Cancel</Button>
+                <Button
+                  variant="primary"
+                  size="sm"
+                  onClick={handleSave}
+                  disabled={saving}
+                >
+                  {saving
+                    ? "Saving..."
+                    : editingId
+                      ? "Update"
+                      : "Save"}
+                </Button>
+
+                                <Button variant="ghost" size="sm" onClick={resetForm}>Cancel</Button>
               </div>
             </div>
           </div>

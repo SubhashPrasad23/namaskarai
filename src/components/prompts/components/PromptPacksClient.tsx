@@ -98,7 +98,7 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
 
           {/* Accordion: Prompt Structure */}
           <div className="border-t border-gray-200/60 ">
-              <button onClick={() => toggleSection("structure")} className="glass-apple-liquid-inner rounded-md! w-full flex items-center justify-between py-4 text-left">
+              <button onClick={() => toggleSection("structure")} className=" rounded-md! w-full flex items-center justify-between py-4 text-left">
               <div className="flex items-center  gap-3">
                   <NotepadText className="md:h-5 md:w-5 h-4 w-4 text-red-600 shrink-0" />
               <span className="font-semibold text-black text-sm">Prompt structure (Role / Context / Task / Output)</span>
@@ -118,7 +118,7 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
 
           {/* Accordion: 10 Beginner Mistakes */}
           <div className="border-t border-gray-200/60">
-              <button onClick={() => toggleSection("mistakes")} className="glass-apple-liquid-inner rounded-md! w-full flex items-center justify-between py-4 text-left">
+              <button onClick={() => toggleSection("mistakes")} className=" rounded-md! w-full flex items-center justify-between py-4 text-left">
               <div className="flex items-center gap-3">
                   <AlertTriangle className="md:h-5 md:w-5 h-4 w-4 text-red-600 shrink-0" />
                   <span className="font-semibold text-black text-sm">10 beginner mistakes</span>
@@ -138,7 +138,7 @@ export default function PromptPacksClient({ promptPacks }: { promptPacks: Prompt
 
           {/* Accordion: 5 Copy-Ready Templates */}
           <div className="border-t border-gray-200/60 ">
-              <button onClick={() => toggleSection("templates")} className="glass-apple-liquid-inner rounded-md! w-full flex items-center justify-between py-4 text-left">
+              <button onClick={() => toggleSection("templates")} className=" rounded-md! w-full flex items-center justify-between py-4 text-left">
               <div className="flex items-center gap-3">
                   <Copy className="md:h-5 md:w-5 h-4 w-4 text-red-600 shrink-0" />
                   <span className="font-semibold text-black text-sm">5 copy-ready templates (EN + AS)</span></div>

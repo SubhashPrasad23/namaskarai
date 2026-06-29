@@ -1,7 +1,9 @@
+import { createClient } from "@/lib/supabase/server";
 import { NextResponse } from "next/server";
-import { supabase } from "@/lib/supabase/server";
 
 export async function GET() {
+  const supabase = await createClient();
+
   const { data, error } = await supabase
     .from("users")
     .select("*")
@@ -15,12 +17,20 @@ export async function GET() {
 }
 
 export async function POST(request: Request) {
+  const supabase = await createClient();
+
   const body = await request.json();
+
   const { name, email, age, courseName } = body;
 
   const { data, error } = await supabase
     .from("users")
-    .insert({ name, email, age, courseName })
+    .insert({
+      name,
+      email,
+      age,
+      courseName,
+    })
     .select()
     .single();
 

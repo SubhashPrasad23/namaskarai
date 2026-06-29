@@ -263,7 +263,7 @@ export default function AiToolsClient({ tools: serverTools }: { tools: Tool[] })
                     <p className="text-sm text-slate-500 mb-2">{tool.subcategory}</p>
                     <p className="text-sm text-gray-600 mb-3"><span className="font-medium">Example:</span> {tool.example}</p>
                     <div className="flex items-center gap-2 mb-3">
-                      <span className="inline-flex items-center gap-1 text-xs border border-gray-200 rounded-full px-2.5 py-1 text-gray-600"><Code className="h-3 w-3" /> {tool.languages.join(", ")}</span>
+                      <span className="inline-flex items-center gap-1 text-xs border border-gray-200 rounded-full px-2.5 py-1 text-gray-600"><Code className="h-3 w-3" /> {tool?.languages?.join(", ")}</span>
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-500">{tool.pricing}</span>

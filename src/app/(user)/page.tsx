@@ -24,7 +24,7 @@ import {
   AlarmClockCheck,
 } from "lucide-react";
 import Image from "next/image";
-import VideoCarousel from "@/components/prompts/components/VideoCarousel";
+import VideoCarousel from "@/components/ui/VideoCarousel";
 import { BsAlarm } from "react-icons/bs";
 import DiamondBorder from "@/components/ui/DiamondBorder";
 
@@ -61,12 +61,12 @@ const heroCards = [
   {
     title: "Career AI",
     desc: "CV, Interview & Job Support",
-    icon: "/icons/career.png",
+    icon: "/icons/career-ai.png",
   },
   {
     title: "Student Tools",
     desc: "Study, Notes & Exam Preparation",
-    icon: "/icons/studentTools.png",
+    icon: "/icons/studentTool.png",
   },
 ];
 
@@ -108,7 +108,7 @@ const categories = [
   {
     title: "Students & Aspirers",
     desc: "Exam notes, Study discipline",
-    icon: "/icons/student.png",
+    icon: "/icons/studentTool.png",
   },
   {
     title: "Small Business",
@@ -482,15 +482,15 @@ export default function HomePage() {
                 </div>
 
                 <div className="lg:col-span-4 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {categories.map((cat) => (
+                  {categories.map((category) => (
                     <div
-                      key={cat.title}
+                      key={category.title}
                       className="glass-card bg-white/30 px-3 py-4 flex md:flex-row flex-col justify-center md:items-start items-center gap-3 rounded-2xl"
                     >
                       <div className=" w-11 h-11 rounded-2xl bg-slate-50  flex items-center justify-center shrink-0">
                         <Image
-                          src={cat.icon}
-                          alt={cat.title}
+                          src={category.icon}
+                          alt={category.title}
                           width={40}
                           height={40}
                         />
@@ -499,10 +499,10 @@ export default function HomePage() {
                       <div className="w-full h-full flex flex-col justify-between">
                         <div>
                           <h4 className="font-bold md:text-sm text-xs text-black">
-                            {cat.title}
+                            {category.title}
                           </h4>
                           <p className="md:text-xs text-[11px] text-slate-600 font-semibold mt-1 flex-1">
-                            {cat.desc}
+                            {category.desc}
                           </p>
                         </div>
 
